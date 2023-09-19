@@ -1,25 +1,20 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("GETrequest", (query) => {
+    cy.request("GET",`${Cypress.env("env").apiURL+query}`)
+})
+
+Cypress.Commands.add("POSTrequest", (body) => {
+    cy.request("POST", `${Cypress.env("env").todosURL}`, body)
+})
+
+Cypress.Commands.add("PUTrequest", (body) => {
+    cy.request("PUT", `${Cypress.env("env").exampleTodosURL}`, body)
+})
+
+Cypress.Commands.add("PATCHrequest", (body) => {
+    cy.request("PATCH", `${Cypress.env("env").exampleTodosURL}`, body)
+})
+
+Cypress.Commands.add("DELETErequest", (query) => {
+    cy.request("DELETE", `${Cypress.env("env").apiURL+query}`)
+})
